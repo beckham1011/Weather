@@ -30,18 +30,8 @@ public class WeatherController {
     private WeatherService weatherService;
 
     @GetMapping("/{cityName}")
-    public Result<CityWeather> getCityWeather(@PathVariable String cityName) {
-        CityWeather cityWeather;
-        try {
-            cityWeather = weatherService.getCityWeather(cityName);
-            log.info(cityWeather);
-        } catch (DocumentException e) {
-            log.error(e);
-            return Result.cityNotFoundFailure();
-        } catch (IOException e) {
-            log.error(e);
-            return Result.failure();
-        }
-        return Result.success(cityWeather);
+    public Result<CityWeather> getCityWeather(@PathVariable String cityName) throws IOException, DocumentException {
+        log.info("Controller to begin get weather.");
+        return Result.success(weatherService.getCityWeather(cityName));
     }
 }

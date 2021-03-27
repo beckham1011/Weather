@@ -95,6 +95,13 @@ public class Result<T> {
     /**
      * Result status code, data and description.
      */
+    public static <T> Result<T> connectionTimeOut() {
+        return new Result<>(ResultStatus.TIMEOUT, null);
+    }
+
+    /**
+     * Result status code, data and description.
+     */
     public static <T> Result<T> failure(ResultStatus resultStatus) {
         return failure(resultStatus, null);
     }

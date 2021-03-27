@@ -38,9 +38,7 @@ public class AustraliaWeatherServiceImpl implements WeatherService {
 
     private static final Logger log = LogManager.getLogger();
 
-    private static final DecimalFormat FORMAT_WITH_TWO_SCALE = new DecimalFormat("#.00");
-    private static final String RAW_TIME_FORMAT_WITH_ZONE = "EEE, d MMM yyyy HH:mm:ss Z";
-    private static final String TARGET_FORMAT_TIME = "EEEE, hh:mm a";
+    private static DecimalFormat windSpeedWith2ScaleFormat = new DecimalFormat(Constants.WINDS_SPEED_FORMAT_WITH_TWO_SCALE);
 
     @Value("${australia.weather.url}")
     private String weatherUrl;
@@ -112,10 +110,10 @@ public class AustraliaWeatherServiceImpl implements WeatherService {
      * @return The special format time.
      */
     private String formatTime(String sourceDate) {
-        DateTimeFormatter sourceDateFormat = DateTimeFormatter.ofPattern(RAW_TIME_FORMAT_WITH_ZONE, Locale.ENGLISH);
-        DateTimeFormatter targetDateFormat = DateTimeFormatter.ofPattern(TARGET_FORMAT_TIME, Locale.ENGLISH);
+        DateTimeFormatter sourceDateFormat = DateTimeFormatter.ofPattern(Constants.TIME_FORMAT_RAW_WITH_ZONE, Locale.ENGLISH);
+        DateTimeFormatter targetDateFormat = DateTimeFormatter.ofPattern(Constants.TIME_FORMAT_NEED, Locale.ENGLISH);
         String targetFormatDate = LocalDateTime.parse(sourceDate, sourceDateFormat).format(targetDateFormat);
-        return StringUtils.replaceOnce(targetFormatDate, ",", StringUtils.SPACE);
+        return StringUtils.replaceOnce(targetFormatDate, Constants.COMMA_SIGNAL, StringUtils.SPACE);
     }
 
     /**
@@ -156,6 +154,6 @@ public class AustraliaWeatherServiceImpl implements WeatherService {
      * @return The kmh format data.
      */
     private String transferMphToKmh(String rawWindSpeed) {
-        return FORMAT_WITH_TWO_SCALE.format(Double.parseDouble(rawWindSpeed) * Constants.MPH_TO_KMH_UNIT);
+        return windSpeedWith2ScaleFormat.format(Double.parseDouble(rawWindSpeed) * Constants.WINDS_SPEED_MPH_TO_KMH_UNIT);
     }
 }
