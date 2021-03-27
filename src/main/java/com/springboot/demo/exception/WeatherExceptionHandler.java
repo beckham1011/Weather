@@ -7,6 +7,7 @@ import org.dom4j.DocumentException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.net.SocketException;
 
@@ -16,12 +17,11 @@ import java.net.SocketException;
  * @author Beck.Xu
  * @since 27/03/2021
  */
-@ControllerAdvice
+@RestControllerAdvice
 public class WeatherExceptionHandler {
 
     private static final Logger log = LogManager.getLogger();
 
-    @ResponseBody
     @ExceptionHandler(value = Exception.class)
     public Result<Object> errorHandler(Exception ex) {
         log.error("Exception: ", ex);
