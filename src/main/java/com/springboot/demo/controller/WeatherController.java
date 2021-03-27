@@ -5,6 +5,7 @@ import com.springboot.demo.response.Result;
 import com.springboot.demo.service.WeatherService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.dom4j.DocumentException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,6 +35,9 @@ public class WeatherController {
         try {
             cityWeather = weatherService.getCityWeather(cityName);
             log.info(cityWeather);
+        } catch (DocumentException e) {
+            log.error(e);
+            return Result.cityNotFoundFailure();
         } catch (IOException e) {
             log.error(e);
             return Result.failure();

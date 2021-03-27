@@ -88,6 +88,13 @@ public class Result<T> {
     /**
      * Result status code, data and description.
      */
+    public static <T> Result<T> cityNotFoundFailure() {
+        return new Result<>(ResultStatus.NOT_FOUND, null);
+    }
+
+    /**
+     * Result status code, data and description.
+     */
     public static <T> Result<T> failure(ResultStatus resultStatus) {
         return failure(resultStatus, null);
     }

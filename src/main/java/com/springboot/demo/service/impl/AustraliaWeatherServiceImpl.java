@@ -11,6 +11,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.dom4j.Document;
+import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -48,7 +49,7 @@ public class AustraliaWeatherServiceImpl implements WeatherService {
     private OKHttpUtils okHttpUtils;
 
     @Override
-    public CityWeather getCityWeather(String cityName) throws IOException {
+    public CityWeather getCityWeather(String cityName) throws IOException, DocumentException {
         log.info("Get city weather begin.");
 
         if (CityWeatherCache.checkCache(cityName)) {

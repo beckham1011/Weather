@@ -16,13 +16,7 @@ public class DocumentUtils {
 
     private static final SAXReader reader = new SAXReader();
 
-    public static Document parse(InputStream inputStream) {
-        Document contentDocument = null;
-        try {
-            contentDocument = reader.read(inputStream);
-        } catch (DocumentException e) {
-            e.printStackTrace();
-        }
-        return contentDocument;
+    public static Document parse(InputStream inputStream) throws DocumentException {
+        return reader.read(inputStream);
     }
 }

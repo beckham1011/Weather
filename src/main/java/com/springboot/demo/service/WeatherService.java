@@ -1,6 +1,7 @@
 package com.springboot.demo.service;
 
 import com.springboot.demo.entity.CityWeather;
+import org.dom4j.DocumentException;
 
 import java.io.IOException;
 
@@ -19,5 +20,5 @@ public interface WeatherService {
      * @return The {@link CityWeather}.
      * @throws IOException Exception occur when the city not exist.
      */
-    CityWeather getCityWeather(String cityName) throws IOException;
+    CityWeather getCityWeather(String cityName) throws IOException, DocumentException;
 }
