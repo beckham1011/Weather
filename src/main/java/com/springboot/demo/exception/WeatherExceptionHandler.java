@@ -1,12 +1,11 @@
 package com.springboot.demo.exception;
 
 import com.springboot.demo.response.Result;
+import com.springboot.demo.response.ResultStatus;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.dom4j.DocumentException;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.net.SocketException;
@@ -22,6 +21,12 @@ public class WeatherExceptionHandler {
 
     private static final Logger log = LogManager.getLogger();
 
+    /**
+     * Handler exception with special {@link ResultStatus}.
+     *
+     * @param ex The exception.
+     * @return The {@link Result}.
+     */
     @ExceptionHandler(value = Exception.class)
     public Result<Object> errorHandler(Exception ex) {
         log.error("Exception: ", ex);
