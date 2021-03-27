@@ -30,13 +30,13 @@ public class WeatherController {
 
     @GetMapping("/{cityName}")
     public Result<CityWeather> getCityWeather(@PathVariable String cityName) {
-        CityWeather cityWeather = null;
+        CityWeather cityWeather;
         try {
             cityWeather = weatherService.getCityWeather(cityName);
             log.info(cityWeather);
         } catch (IOException e) {
             log.error(e);
-            Result.failure();
+            return Result.failure();
         }
         return Result.success(cityWeather);
     }

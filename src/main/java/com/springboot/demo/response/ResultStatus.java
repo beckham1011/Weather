@@ -2,6 +2,12 @@ package com.springboot.demo.response;
 
 import org.springframework.http.HttpStatus;
 
+/**
+ *  Http response result enum.
+ *
+ * @author Beck.Xu
+ * @since 26/03/2021
+ */
 public enum ResultStatus {
 
     SUCCESS(HttpStatus.OK, 200, "OK"),
@@ -10,17 +16,17 @@ public enum ResultStatus {
     INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, 500, "Internal Server Error");
 
     /**
-     * 返回的HTTP状态码,  符合http请求
+     * Response with http code.
      */
     private HttpStatus httpStatus;
 
     /**
-     * 业务异常码
+     * Business code.
      */
     private Integer code;
 
     /**
-     * 业务异常信息描述
+     * Business error message.
      */
     private String message;
 

@@ -1,16 +1,17 @@
 package com.springboot.demo.response;
 
+
 public class Result<T> {
     /**
-     * 业务错误码
+     * Error code.
      */
     private Integer code;
     /**
-     * 信息描述
+     * Message description.
      */
     private String message;
     /**
-     * 返回参数
+     * Return parameter.
      */
     private T data;
 
@@ -54,21 +55,21 @@ public class Result<T> {
     }
 
     /**
-     * 业务成功返回业务代码和描述信息
+     * Result with null.
      */
     public static Result<Void> success() {
         return new Result<>(ResultStatus.SUCCESS, null);
     }
 
     /**
-     * 业务成功返回业务代码,描述和返回的参数
+     * Result with status code and description.
      */
     public static <T> Result<T> success(T data) {
         return new Result<>(ResultStatus.SUCCESS, data);
     }
 
     /**
-     * 业务成功返回业务代码,描述和返回的参数
+     * Result status code, data and description.
      */
     public static <T> Result<T> success(ResultStatus resultStatus, T data) {
         if (resultStatus == null) {
@@ -78,21 +79,21 @@ public class Result<T> {
     }
 
     /**
-     * 业务异常返回业务代码和描述信息
+     * Result status code, data and description.
      */
     public static <T> Result<T> failure() {
         return new Result<>(ResultStatus.INTERNAL_SERVER_ERROR, null);
     }
 
     /**
-     * 业务异常返回业务代码,描述和返回的参数
+     * Result status code, data and description.
      */
     public static <T> Result<T> failure(ResultStatus resultStatus) {
         return failure(resultStatus, null);
     }
 
     /**
-     * 业务异常返回业务代码,描述和返回的参数
+     * Result status code, data and description.
      */
     public static <T> Result<T> failure(ResultStatus resultStatus, T data) {
         if (resultStatus == null) {

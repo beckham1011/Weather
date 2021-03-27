@@ -1,5 +1,6 @@
 package com.springboot.demo.service.impl;
 
+import com.springboot.demo.cache.CityWeatherCache;
 import com.springboot.demo.constant.Constants;
 import com.springboot.demo.entity.CityWeather;
 import com.springboot.demo.service.WeatherService;
@@ -49,6 +50,12 @@ public class AustraliaWeatherServiceImpl implements WeatherService {
     @Override
     public CityWeather getCityWeather(String cityName) throws IOException {
         log.info("Get city weather begin.");
+
+        if (CityWeatherCache.checkCache(cityName)) {
+            log.info("Get city weather from cache.");
+            return CityWeatherCache.getCityWeather(cityName);
+        }
+
         ResponseBody responseBody = okHttpUtils.get(MessageFormat.format(weatherUrl, cityName));
         Document weatherDocument = null;
         if (Objects.nonNull(responseBody)) {
@@ -61,6 +68,7 @@ public class AustraliaWeatherServiceImpl implements WeatherService {
             String lastBuildDate = channelElement.element("lastBuildDate").getText();
             String currentCityWeather = channelElement.element("item").element("description").getText();
             nowCityWeather = generateCityWeather(currentCityWeather, lastBuildDate);
+            CityWeatherCache.cacheCityWeather(nowCityWeather);
         }
         log.info("Get city weather end.");
         return nowCityWeather;
