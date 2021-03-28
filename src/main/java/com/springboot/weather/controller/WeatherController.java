@@ -1,8 +1,8 @@
-package com.springboot.demo.controller;
+package com.springboot.weather.controller;
 
-import com.springboot.demo.entity.CityWeather;
-import com.springboot.demo.response.Result;
-import com.springboot.demo.service.WeatherService;
+import com.springboot.weather.entity.CityWeather;
+import com.springboot.weather.response.Result;
+import com.springboot.weather.service.WeatherService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.dom4j.DocumentException;

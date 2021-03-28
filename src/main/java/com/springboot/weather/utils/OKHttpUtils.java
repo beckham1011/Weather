@@ -1,4 +1,4 @@
-package com.springboot.demo.utils;
+package com.springboot.weather.utils;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;

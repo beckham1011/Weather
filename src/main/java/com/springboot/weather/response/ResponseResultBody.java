@@ -1,4 +1,4 @@
-package com.springboot.demo.response;
+package com.springboot.weather.response;
 
 import org.springframework.web.bind.annotation.ResponseBody;
 

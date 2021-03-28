@@ -1,11 +1,11 @@
-package com.springboot.demo.service.impl;
+package com.springboot.weather.service.impl;
 
-import com.springboot.demo.cache.CityWeatherCache;
-import com.springboot.demo.constant.Constants;
-import com.springboot.demo.entity.CityWeather;
-import com.springboot.demo.service.WeatherService;
-import com.springboot.demo.utils.DocumentUtils;
-import com.springboot.demo.utils.OKHttpUtils;
+import com.springboot.weather.cache.CityWeatherCache;
+import com.springboot.weather.constant.Constants;
+import com.springboot.weather.entity.CityWeather;
+import com.springboot.weather.service.WeatherService;
+import com.springboot.weather.utils.DocumentUtils;
+import com.springboot.weather.utils.OKHttpUtils;
 import okhttp3.ResponseBody;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
@@ -90,7 +90,7 @@ public class AustraliaWeatherServiceImpl implements WeatherService {
             String city = cityAndWeather[0].trim();
             String weather = cityAndWeather[1].trim();
             String wind = values[2];
-            String temperature = values[3];
+            String temperature = values[values.length - 1];
 
             cityWeather.setCityName(city);
             cityWeather.setUpdateTime(formatTime(lastBuildDate));

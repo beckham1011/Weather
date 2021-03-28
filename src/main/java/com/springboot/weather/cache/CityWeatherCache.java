@@ -1,6 +1,6 @@
-package com.springboot.demo.cache;
+package com.springboot.weather.cache;
 
-import com.springboot.demo.entity.CityWeather;
+import com.springboot.weather.entity.CityWeather;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;

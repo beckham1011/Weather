@@ -1,8 +1,7 @@
-package com.springboot.demo;
+package com.springboot.weather;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Spring boot application.

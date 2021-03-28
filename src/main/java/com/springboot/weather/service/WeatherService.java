@@ -1,6 +1,6 @@
-package com.springboot.demo.service;
+package com.springboot.weather.service;
 
-import com.springboot.demo.entity.CityWeather;
+import com.springboot.weather.entity.CityWeather;
 import org.dom4j.DocumentException;
 
 import java.io.IOException;

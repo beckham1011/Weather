@@ -1,4 +1,4 @@
-package com.springboot.demo.response;
+package com.springboot.weather.response;
 
 
 public class Result<T> {

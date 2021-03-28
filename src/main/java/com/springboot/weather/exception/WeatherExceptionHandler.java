@@ -1,7 +1,7 @@
-package com.springboot.demo.exception;
+package com.springboot.weather.exception;
 
-import com.springboot.demo.response.Result;
-import com.springboot.demo.response.ResultStatus;
+import com.springboot.weather.response.Result;
+import com.springboot.weather.response.ResultStatus;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.dom4j.DocumentException;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import java.net.SocketException;
 
 /**
- * Deal with global exception
+ * Deal with global exception.
  *
  * @author Beck.Xu
  * @since 27/03/2021

@@ -1,4 +1,4 @@
-package com.springboot.demo.constant;
+package com.springboot.weather.constant;
 
 public interface Constants {
 

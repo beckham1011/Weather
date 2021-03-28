@@ -1,4 +1,4 @@
-package com.springboot.demo.entity;
+package com.springboot.weather.entity;
 
 import java.util.Objects;
 
