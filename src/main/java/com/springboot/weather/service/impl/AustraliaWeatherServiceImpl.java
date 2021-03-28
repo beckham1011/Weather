@@ -2,7 +2,7 @@ package com.springboot.weather.service.impl;
 
 import com.springboot.weather.cache.CityWeatherCache;
 import com.springboot.weather.constant.Constants;
-import com.springboot.weather.entity.CityWeather;
+import com.springboot.weather.entity.CityWeatherVO;
 import com.springboot.weather.service.WeatherService;
 import com.springboot.weather.utils.DocumentUtils;
 import com.springboot.weather.utils.OKHttpUtils;
@@ -48,7 +48,7 @@ public class AustraliaWeatherServiceImpl implements WeatherService {
     private OKHttpUtils okHttpUtils;
 
     @Override
-    public CityWeather getCityWeather(String cityName) throws IOException, DocumentException {
+    public CityWeatherVO getCityWeather(String cityName) throws IOException, DocumentException {
         log.info("Get city weather begin.");
 
         if (CityWeatherCache.checkCache(cityName)) {
@@ -62,7 +62,7 @@ public class AustraliaWeatherServiceImpl implements WeatherService {
             weatherDocument = DocumentUtils.parse(responseBody.byteStream());
         }
 
-        CityWeather nowCityWeather = null;
+        CityWeatherVO nowCityWeather = null;
         if (Objects.nonNull(weatherDocument)) {
             Element channelElement = weatherDocument.getRootElement().element("channel");
             String lastBuildDate = channelElement.element("lastBuildDate").getText();
@@ -79,12 +79,12 @@ public class AustraliaWeatherServiceImpl implements WeatherService {
      *
      * @param cityWeatherDescription The city weather description.
      * @param lastBuildDate          Update time.
-     * @return The {@link CityWeather} with value.
+     * @return The {@link CityWeatherVO} with value.
      */
-    private CityWeather generateCityWeather(String cityWeatherDescription, String lastBuildDate) {
-        CityWeather cityWeather = null;
+    private CityWeatherVO generateCityWeather(String cityWeatherDescription, String lastBuildDate) {
+        CityWeatherVO cityWeather = null;
         if (StringUtils.isNotBlank(cityWeatherDescription)) {
-            cityWeather = new CityWeather();
+            cityWeather = new CityWeatherVO();
             String[] values = cityWeatherDescription.split("\\.");
             String[] cityAndWeather = values[0].split("--");
             String city = cityAndWeather[0].trim();

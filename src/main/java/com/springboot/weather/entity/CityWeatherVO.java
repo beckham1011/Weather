@@ -2,7 +2,7 @@ package com.springboot.weather.entity;
 
 import java.util.Objects;
 
-public class CityWeather {
+public class CityWeatherVO {
 
     private String cityName;
     private String updateTime;
@@ -65,7 +65,7 @@ public class CityWeather {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        CityWeather that = (CityWeather) o;
+        CityWeatherVO that = (CityWeatherVO) o;
         return Objects.equals(cityName, that.cityName)
                 && Objects.equals(updateTime, that.updateTime)
                 && Objects.equals(weather, that.weather)

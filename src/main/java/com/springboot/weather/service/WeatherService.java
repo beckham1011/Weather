@@ -1,6 +1,6 @@
 package com.springboot.weather.service;
 
-import com.springboot.weather.entity.CityWeather;
+import com.springboot.weather.entity.CityWeatherVO;
 import org.dom4j.DocumentException;
 
 import java.io.IOException;
@@ -17,8 +17,8 @@ public interface WeatherService {
      * Get the special city weather.
      *
      * @param cityName The name of city.
-     * @return The {@link CityWeather}.
+     * @return The {@link CityWeatherVO}.
      * @throws IOException Exception occur when the city not exist.
      */
-    CityWeather getCityWeather(String cityName) throws IOException, DocumentException;
+    CityWeatherVO getCityWeather(String cityName) throws IOException, DocumentException;
 }

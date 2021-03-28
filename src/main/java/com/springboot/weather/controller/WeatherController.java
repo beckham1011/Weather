@@ -1,6 +1,6 @@
 package com.springboot.weather.controller;
 
-import com.springboot.weather.entity.CityWeather;
+import com.springboot.weather.entity.CityWeatherVO;
 import com.springboot.weather.response.Result;
 import com.springboot.weather.service.WeatherService;
 import org.apache.logging.log4j.LogManager;
@@ -30,7 +30,7 @@ public class WeatherController {
     private WeatherService weatherService;
 
     @GetMapping("/{cityName}")
-    public Result<CityWeather> getCityWeather(@PathVariable String cityName) throws IOException, DocumentException {
+    public Result<CityWeatherVO> getCityWeather(@PathVariable String cityName) throws IOException, DocumentException {
         log.info("Controller to begin get weather.");
         return Result.success(weatherService.getCityWeather(cityName));
     }

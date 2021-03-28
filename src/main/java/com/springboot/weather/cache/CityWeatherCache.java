@@ -1,6 +1,6 @@
 package com.springboot.weather.cache;
 
-import com.springboot.weather.entity.CityWeather;
+import com.springboot.weather.entity.CityWeatherVO;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -22,31 +22,31 @@ public class CityWeatherCache {
     private static Map<String, Object> cityWeatherMapCache = new ConcurrentHashMap<>();
 
     /**
-     * Get {@link CityWeather}.
+     * Get {@link CityWeatherVO}.
      *
      * @param cityName The city name.
-     * @return The {@link CityWeather}.
+     * @return The {@link CityWeatherVO}.
      */
-    public static CityWeather getCityWeather(String cityName) {
+    public static CityWeatherVO getCityWeather(String cityName) {
         if (checkCache(cityName)) {
-            return (CityWeather) cityWeatherMapCache.get(cityName);
+            return (CityWeatherVO) cityWeatherMapCache.get(cityName);
         }
         return null;
     }
 
     /**
-     * Cache the {@link CityWeather}.
+     * Cache the {@link CityWeatherVO}.
      *
-     * @param cityWeather The {@link CityWeather}.
+     * @param cityWeather The {@link CityWeatherVO}.
      */
-    public static void cacheCityWeather(CityWeather cityWeather) {
+    public static void cacheCityWeather(CityWeatherVO cityWeather) {
         String cityName = cityWeather.getCityName().toLowerCase();
         cityWeatherMapCache.put(cityName + CACHE_TIME_SIGNAL, System.currentTimeMillis() + CACHE_HOLD_TIME_5M);
         cityWeatherMapCache.put(cityName, cityWeather);
     }
 
     /**
-     * Remove the {@link CityWeather} when its time expired.
+     * Remove the {@link CityWeatherVO} when its time expired.
      *
      * @param cityName The city name.
      */
@@ -56,7 +56,7 @@ public class CityWeatherCache {
     }
 
     /**
-     * Check if the {@link CityWeather} cache is expired or not.
+     * Check if the {@link CityWeatherVO} cache is expired or not.
      *
      * @param cacheName The city name.
      * @return True when the cache is good.
