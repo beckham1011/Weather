@@ -10,6 +10,9 @@ mvn -version
 git clone https://github.com/beckham1011/Weather.git
 git checkout master
 
+#Compile
+mvn package
+
 #Run
 mvn springboot:run
 
