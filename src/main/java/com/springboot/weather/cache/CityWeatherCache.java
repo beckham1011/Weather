@@ -28,10 +28,7 @@ public class CityWeatherCache {
      * @return The {@link CityWeatherVO}.
      */
     public static CityWeatherVO getCityWeather(String cityName) {
-        if (checkCache(cityName)) {
-            return (CityWeatherVO) cityWeatherMapCache.get(cityName);
-        }
-        return null;
+        return (CityWeatherVO) cityWeatherMapCache.get(cityName);
     }
 
     /**
