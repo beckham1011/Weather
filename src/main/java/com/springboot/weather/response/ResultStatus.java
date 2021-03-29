@@ -11,8 +11,9 @@ import org.springframework.http.HttpStatus;
 public enum ResultStatus {
 
     SUCCESS(HttpStatus.OK, 200, "OK"),
-    NOT_FOUND(HttpStatus.NOT_FOUND, 404, "Not Found The City"),
-    TIMEOUT(HttpStatus.REQUEST_TIMEOUT, 408, "Net Connection TimeOut"),
+    CITY_NOT_FOUND(HttpStatus.NOT_FOUND, 404, "Not Found The City."),
+    NOT_FOUND(HttpStatus.NOT_FOUND, 404, "Your Request Not Found."),
+    TIMEOUT(HttpStatus.REQUEST_TIMEOUT, 408, "Net Connection TimeOut."),
     INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, 500, "Internal Server Error");
 
     /**

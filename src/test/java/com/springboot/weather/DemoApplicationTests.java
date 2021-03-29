@@ -12,7 +12,9 @@ import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -37,12 +39,15 @@ public class DemoApplicationTests {
 
     /**
      * Init.
-     * @throws Exception
      */
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         String url = String.format("http://localhost:%d/", port);
-        this.base = new URL(url);
+        try {
+            this.base = new URL(url);
+        } catch (MalformedURLException e) {
+            log.error("Unit test exception", e);
+        }
     }
 
     /**
@@ -53,7 +58,7 @@ public class DemoApplicationTests {
         ResponseEntity<String> response = this.restTemplate.getForEntity(
                 this.base.toString() + "/cityWeather/sydney", String.class, "");
         log.info(String.format("Test result: %s", response.getBody()));
-        assertTrue(response.getBody().contains("200"));
+        assertTrue(Objects.requireNonNull(response.getBody()).contains("200"));
         assertTrue(response.getBody().contains("OK"));
         assertTrue(response.getBody().contains("cityName"));
         assertTrue(response.getBody().contains("Sydney"));
@@ -71,7 +76,19 @@ public class DemoApplicationTests {
         ResponseEntity<String> response = this.restTemplate.getForEntity(
                 this.base.toString() + "/cityWeather/sydney11", String.class, "");
         log.info(String.format("Test result: %s", response.getBody()));
-        assertTrue(response.getBody().contains("404"));
+        assertTrue(Objects.requireNonNull(response.getBody()).contains("404"));
         assertTrue(response.getBody().contains("Not Found The City"));
+    }
+
+    /**
+     * Test 404 exception.
+     */
+    @Test
+    public void testCityTemperatureNotFoundRequestPath() {
+        ResponseEntity<String> response = this.restTemplate.getForEntity(
+                this.base.toString(), String.class, "");
+        log.info(String.format("Test result: %s", response.getBody()));
+        assertTrue(Objects.requireNonNull(response.getBody()).contains("404"));
+        assertTrue(response.getBody().contains("Your Request Not Found."));
     }
 }
