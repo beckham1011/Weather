@@ -8,7 +8,7 @@ mvn -version
 
 #Download
 git clone https://github.com/beckham1011/Weather.git
-git checkout master
+git checkout SMSTest
 
 #Compile
 mvn package

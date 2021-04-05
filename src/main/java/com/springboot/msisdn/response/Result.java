@@ -1,4 +1,4 @@
-package com.springboot.weather.response;
+package com.springboot.msisdn.response;
 
 
 public class Result<T> {
